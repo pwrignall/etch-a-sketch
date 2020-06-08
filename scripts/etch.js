@@ -5,7 +5,7 @@ let numSquares;
 
 function initialiseGrid() {
 
-    if (numSquares == undefined) numSquares = 16;
+    if (numSquares == undefined || numSquares == '') numSquares = 16;
 
     divContainer.style.gridTemplate = `repeat(${numSquares}, 1fr) / repeat(${numSquares}, 1fr)`;
 
@@ -16,9 +16,26 @@ function initialiseGrid() {
     };
 
     squares = document.querySelectorAll('.grid-square');
-    squares.forEach((square) => {
-        square.addEventListener('mouseover', changeHoverStatus)
-    });
+
+    let selectedOption = document.querySelector('input[name = "options"]:checked').value;
+
+    switch (selectedOption) {
+        case 'simple':
+            squares.forEach((square) => {
+                square.addEventListener('mouseover', changeHoverStatus)
+            });
+            break;
+        case 'colours':
+            squares.forEach((square) => {
+                square.addEventListener('mouseover', changeHoverColour)
+            });
+            break;
+        case 'shades':
+            squares.forEach((square) => {
+                square.addEventListener('mouseover', changeHoverDarker)
+            });
+            break;
+    }
 };
 
 function removeElements() {
@@ -49,12 +66,16 @@ function changeHoverColour(e) {
     let blue = generateRandomNumber();
 
     e.target.style.backgroundColor = `rgba(${red}, ${green}, ${blue})`;
+
+    e.target.removeEventListener('mouseover', changeHoverColour);
 };
 
 function changeHoverDarker(e) {
     e.target.style.backgroundColor = 'rgb(60, 60, 60)';
     if (e.target.style.opacity != '1') {
-        e.target.style.opacity -= '-0.1'
+        e.target.style.opacity -= '-0.1';
+    } else {
+        e.target.removeEventListener('mouseover', changeHoverDarker);
     };
 };
 
