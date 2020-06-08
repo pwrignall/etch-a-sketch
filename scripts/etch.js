@@ -1,6 +1,7 @@
 const divContainer = document.querySelector('#grid-container');
 
 let squares;
+let numSquares;
 
 function removeElements() {
     while (divContainer.childNodes.length > 0) {
@@ -8,7 +9,11 @@ function removeElements() {
     };
 };
 
-function initialiseGrid(numSquares = 16) {
+function initialiseGrid() {
+
+    if (numSquares == undefined) numSquares = 16;
+
+    divContainer.style.gridTemplate = `repeat(${numSquares}, 1fr) / repeat(${numSquares}, 1fr)`;
 
     for (let i = 0; i < numSquares * numSquares; i++) {
         const gridSquare = document.createElement('div');
@@ -28,6 +33,7 @@ function changeHoverStatus(e) {
 }
 
 function clearGrid() {
+    numSquares = prompt('How many squares would you like on each side of the grid?');
     removeElements();
     initialiseGrid();
 };
