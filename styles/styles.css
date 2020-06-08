@@ -1,10 +1,10 @@
 #grid-container {
-    display      : grid;
-    column-gap   : 0.1rem;
-    row-gap      : 0.1rem;
-    width        : min(90vh, 90vw);
-    height       : min(90vh, 90vw);
-    margin       : 8vh auto 2vh auto;
+    display   : grid;
+    column-gap: 0.1rem;
+    row-gap   : 0.1rem;
+    width     : min(90vh, 90vw);
+    height    : min(90vh, 90vw);
+    margin    : min(8vh, 8vw) auto min(2vh, 2vw) auto;
 }
 
 .grid-square {
@@ -18,7 +18,7 @@
 #header {
     position        : fixed;
     top             : 0;
-    height          : 6vh;
+    height          : min(6vh, 6vw);
     background-color: rgb(30, 30, 32);
     width           : 100%;
     display         : flex;
@@ -30,6 +30,7 @@
 #header button {
     display         : inline-flex;
     font-family     : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size       : 18px;
     background-color: rgb(60, 60, 60);
     padding         : 0.2em 0.5em;
     color           : rgb(230, 230, 230);
