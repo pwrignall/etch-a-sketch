@@ -45,6 +45,11 @@ function removeElements() {
 };
 
 function clearGrid() {
+    removeElements();
+    initialiseGrid();
+};
+
+function resetGrid() {
     numSquares = prompt('How many squares would you like on each side of the grid?');
     removeElements();
     initialiseGrid();
@@ -80,6 +85,9 @@ function changeHoverDarker(e) {
 };
 
 const clearButton = document.querySelector('#btn-clear');
-clearButton.addEventListener('click', clearGrid);
+clearButton.addEventListener('click', resetGrid);
+
+const radioGroup = document.querySelector('#behaviour-options');
+radioGroup.addEventListener('click', clearGrid);
 
 initialiseGrid();
